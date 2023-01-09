@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Main page</title>
+</head>
+<body>
+<div>
+    <h2>New user</h2>
+    <form action="save" method="post">
+        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+        <table border="1" cellpadding="5">
+            <tr>
+                <td>First name: </td>
+                <td><input type="text" name="firstName"/></td>
+            </tr>
+            <tr>
+                <td>Last name: </td>
+                <td><input type="text" name="lastName"/></td>
+            </tr>
+            <tr>
+                <td>Age: </td>
+                <td><input type="text" name="age"/></td>
+            </tr>
+            <tr>
+                <td>Email: </td>
+                <td><input type="text" name="email"/></td>
+            </tr>
+            <tr>
+                <td>Password: </td>
+                <td><input type="text" name="password"/></td>
+            </tr>
+            <tr>
+                <td>Role: </td>
+                <td>
+                    <div th:each="role: ${roles}">
+                       <input type="checkbox" th:name="${role.getName()}" th:text="${role.getName()}">
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2"><input type="submit" value="Save"></td>
+            </tr>
+        </table>
+    </form>
+</div>
+</body>
+</html>
